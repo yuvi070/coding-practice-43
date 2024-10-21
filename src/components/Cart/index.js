@@ -1,5 +1,6 @@
 import Header from '../Header'
 import CartListView from '../CartListView'
+import CartSummary from '../CartSummary'
 
 import CartContext from '../../context/CartContext'
 import EmptyCartView from '../EmptyCartView'
@@ -16,6 +17,7 @@ const Cart = () => (
       cartList.forEach(element => {
         sum += element.quantity * element.price
       })
+      const cartLength = cartList.length
       return (
         <>
           <Header />
@@ -29,15 +31,7 @@ const Cart = () => (
                   Remove all
                 </h3>
                 <CartListView />
-                <div className="cart-summary-container">
-                  <h2 className="color1">
-                    Order Total: <span className="rs-text">Rs {sum}/-</span>
-                  </h2>
-                  <p className="color1">{cartList.length} items in cart</p>
-                  <button className="checkout-button" type="button">
-                    Checkout
-                  </button>
-                </div>
+                <CartSummary sum={sum} cartLength={cartLength} />
                 {/* TODO: Add your code for Cart Summary here */}
               </div>
             )}
