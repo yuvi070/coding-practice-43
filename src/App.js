@@ -18,6 +18,40 @@ class App extends Component {
   }
 
   //   TODO: Add your code for remove all cart items, increment cart item quantity, decrement cart item quantity, remove cart item
+  incrementCartItemQuantity = id => {
+    this.setState(prev => ({
+      cartList: prev.cartList.map(each => {
+        if (each.id === id) {
+          return {...each, quantity: each.quantity + 1}
+        }
+        return each
+      }),
+    }))
+  }
+
+  decrementCartItemQuantity = id => {
+    this.setState(prev => ({
+      cartList: prev.cartList.map(each => {
+        if (each.id === id) {
+          if (each.quantity === 0) {
+            this.removeCartItem(each.id)
+          }
+          return {...each, quantity: each.quantity - 1}
+        }
+        return each
+      }),
+    }))
+  }
+
+  removeCartItem = id => {
+    const {cartList} = this.state
+    const filteredCart = cartList.filter(each => each.id !== id)
+    this.setState({cartList: filteredCart})
+  }
+
+  removeAllCartItems = () => {
+    this.setState({cartList: []})
+  }
 
   addCartItem = product => {
     //   TODO: Update the code here to implement addCartItem
@@ -46,6 +80,9 @@ class App extends Component {
           cartList,
           addCartItem: this.addCartItem,
           removeCartItem: this.removeCartItem,
+          incrementCartItemQuantity: this.incrementCartItemQuantity,
+          decrementCartItemQuantity: this.decrementCartItemQuantity,
+          removeAllCartItems: this.removeAllCartItems,
         }}
       >
         <Switch>

@@ -38,3 +38,34 @@
 }
 
 /* Write your CSS here */
+.remove-all-button {
+  text-align: end;
+  color: #0b69ff;
+  cursor: pointer;
+}
+.cart-summary-container {
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-end; */
+  margin-left: auto;
+  line-height: 5px;
+  width: 25%;
+  margin-bottom: 40px;
+}
+.checkout-button {
+  width: 100%;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background-color: #0b69ff;
+  color: white;
+  border-radius: 7px;
+  outline: none;
+  border: 0px;
+  cursor: pointer;
+}
+.color1 {
+  color: #616e7c;
+}
+.rs-text {
+  color: #171f46;
+}
